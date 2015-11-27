@@ -49,7 +49,6 @@ Examples
 
     irtrans --h
 
-    -h, --help    show this help message and exit
     --v           show program's version number and exit
     --s source    select language (3 letter ISO-639 code) [hin|tel|guj|eng]
     --t target    select language (3 letter ISO-639 code) [hin|tel|guj|eng]
@@ -72,7 +71,7 @@ Examples
 .. code:: python
 
     >>> from irtrans import transliterator
-    >>> trn = transliterator(format_='text', source='hin', target='eng')
+    >>> trn = transliterator(source='hin', target='eng')
     >>> 
     >>> text = """आजा सनम मधुर चांदनी में हम-तुम मिले
     ... तो वीराने में भी आ जाएगी बहार
