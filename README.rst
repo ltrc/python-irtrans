@@ -10,13 +10,13 @@ Installation
 Dependencies
 ~~~~~~~~~~~~
 
-`python-irtrans`_ requires `cython`_, `SciPy`_ and `python-converter-indic`_.
+`python-irtrans`_ requires `cython`_, `SciPy`_ and `indic-wx-converter`_.
 
 .. _`cython`: http://docs.cython.org/src/quickstart/install.html
 
 .. _`Scipy`: http://www.scipy.org/install.html
 
-.. _`python-converter-indic`: https://github.com/irshadbhat/python-converter-indic
+.. _`indic-wx-converter`: https://github.com/irshadbhat/indic-wx-converter
 
 To install the dependencies do something like (Ubuntu):
 
