@@ -32,7 +32,9 @@ class IR_Transliterator():
 
         self.lookup = dict()
 	self.esc_char = chr(0)
-        self.n, self.tab, self.space = 4, '~~', '^^'
+        self.n = 4
+        self.tab = '`%s`' %(chr(1))
+        self.space = '`%s`' %(chr(2))
         self.con = wxConvert(order='utf2wx', lang=lang)
 	lang = lang[0]
         path = os.path.abspath(__file__).rpartition('/')[0]
@@ -63,9 +65,11 @@ class IR_Transliterator():
         scores = X.dot(self.coef_.T).toarray()
 
         y = viterbi.decode(scores, self.intercept_trans_, self.intercept_init_, self.intercept_final_)
-        y =  [self.classes_[pred] for pred in y]
+        y = [self.classes_[pred] for pred in y]
+	y = ''.join(y)
+	y = y.replace('_', '')
 
-        return re.sub('_','',''.join(y))
+        return y
 
     def case_trans(self, word):
         if not word:
@@ -94,11 +98,7 @@ class IR_Transliterator():
             line = line.replace(' ', self.space)
             line = ' '.join(re.split(r"([^a-zA-Z%s]+)" %(self.esc_char), line)).split()
             for word in line:
-		if word == self.space:
-		    tline += " "
-		elif word == self.tab:
-		    tline += "\t"
-		elif word[0] == self.esc_char:
+		if word[0] == self.esc_char:
 		    tline += word[1:].encode('utf-8')
                 elif not word[0].isalpha():
                     tline += word.encode('utf-8')
@@ -109,5 +109,5 @@ class IR_Transliterator():
 	
 	tline = tline.replace(self.space, ' ')
 	tline = tline.replace(self.tab, '\t')
-       
-        return tline.strip()
+      
+        return tline.strip('\n')

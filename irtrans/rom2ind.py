@@ -29,7 +29,9 @@ class RI_Transliterator():
 
     def __init__(self, lang): 
         self.lookup = dict()
-	self.n , self.tab, self.space = 4, '~~', '^^'
+	self.n = 4
+	self.tab = '`%s`' %(chr(1))
+	self.space = '`%s`' %(chr(2))
         self.con = wxConvert(order='wx2utf', lang=lang)
 	lang = lang[0]
         path = os.path.abspath(__file__).rpartition('/')[0]
@@ -62,8 +64,10 @@ class RI_Transliterator():
         y = viterbi.decode(scores, self.intercept_trans_,
                self.intercept_init_, self.intercept_final_)
         y =  [self.classes_[pred] for pred in y]
+	y = ''.join(y)
+	y = y.replace('_', '')
 
-        return re.sub('_','',''.join(y))
+        return y
 
     def case_trans(self, word):
         if not word:
@@ -94,11 +98,7 @@ class RI_Transliterator():
             line = re.sub(r'([a-z])\.([a-z])', r'\1\2', line)
             line = ' '.join(re.split(r"([^a-z]+)", line)).split()
             for word in line:
-		if word == self.space:
-		    tline += " "
-		elif word == self.tab:
-		    tline += "\t"
-		elif not word.isalpha():
+		if not word.isalpha():
 		    tline += word.encode('utf-8')
 		else:
 		    op_word = self.case_trans(word)
@@ -108,4 +108,4 @@ class RI_Transliterator():
 	tline = tline.replace(self.space, ' ')
         tline = tline.replace(self.tab, '\t')
 
-        return tline.strip()
+        return tline.strip('\n')
