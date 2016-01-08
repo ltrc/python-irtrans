@@ -3,21 +3,14 @@
 
 from __future__ import print_function
 
-from Cython.Distutils import build_ext
-import os.path
 import os
-import warnings
 import sys
+import warnings
+from setuptools import setup, Extension
+from Cython.Distutils import build_ext
 
 dist_dir = os.path.dirname(os.path.abspath(__file__))
 os.system("gunzip -kf %s/irtrans/models/* 2> /dev/null" %dist_dir)
-
-try:
-    from setuptools import setup, Extension
-    setuptools_available = True
-except ImportError:
-    from distutils.core import setup, Extension
-    setuptools_available = False
 
 try:
     import py2exe
@@ -49,10 +42,7 @@ if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
     params = py2exe_params
 else:
     files_spec = [
-        ('etc/bash_completion.d', ['irtrans.bash-completion']),
-        ('etc/fish/completions', ['irtrans.fish']),
-        ('share/doc/irtrans', ['README.rst']),
-        ('share/man/man1', ['irtrans.1'])
+        ('share/doc/irtrans', ['README.rst'])
     ]
     root = os.path.dirname(os.path.abspath(__file__))
     data_files = []
@@ -68,10 +58,7 @@ else:
     params = {
         'data_files': data_files,
     }
-    if setuptools_available:
-        params['entry_points'] = {'console_scripts': ['irtrans = irtrans:main']}
-    else:
-        params['scripts'] = ['bin/irtrans']
+    params['entry_points'] = {'console_scripts': ['irtrans = irtrans:main']}
 
 # Get the version from youtube_dl/version.py without importing the package
 exec(compile(open('irtrans/version.py').read(),
