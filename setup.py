@@ -78,25 +78,20 @@ setup(
     license = "MIT",
     url="https://github.com/irshadbhat/irtrans",
     package_dir={"hutrams":"irtrans"},
-    packages=['irtrans'],
-    package_data={'irtrans': ['models/*.npy', 'extras/*']},
+    packages=['irtrans', 'irtrans._utils', 'irtrans._decode'],
+    package_data={'irtrans': ['models/*.npy']},
 
     classifiers=[
-        "Topic :: Indian Languages :: Language Identification",
+        "Topic :: Indian Languages :: Transliteration",
         "Environment :: Console",
         "License :: Public Domain",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 2.7"
     ],
     cmdclass={'build_ext': build_ext},
     ext_modules=[
-        Extension("irtrans.viterbi", ["irtrans/viterbi.pyx"]),
+        Extension("irtrans._decode.viterbi", ["irtrans/_decode/viterbi.pyx"]),
     ],
-    #install_requires=["cython", "numpy", "scipy", "sklearn"],
-    requires=["cython", "numpy", "scipy", "sklearn"],
+    install_requires=["cython", "numpy", "scipy"],
+    #requires=["cython", "numpy", "scipy"],
     **params
 )

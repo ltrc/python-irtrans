@@ -1,17 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*-
+
+#Copyright (C) 2015 Irshad Ahmad Bhat
+
 
 import os
 import re
 import sys
 
-from .ssf_reader import SSFReader
+from ._utils import SSFReader
 from .ind2rom import IR_Transliterator
 from .rom2ind import RI_Transliterator
-
-__author__     = ["Riyaz Ahmad", "Irshad Ahmad"]
-__maintainer__ = "Irshad Ahmad"
-__credits__    = ["Irshad Ahmad", "Riyaz Ahmad"]
-__email__      = "irshad.bhat@research.iiit.ac.in",
 
 class transliterator():
 

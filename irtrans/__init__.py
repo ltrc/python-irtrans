@@ -1,4 +1,5 @@
-#! /usr/bin/env python
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*-
 
 import re
 import sys
@@ -6,10 +7,10 @@ import argparse
 
 from .transliterator import transliterator
 
-__name__       = "Hindi-Urdu-Transliterator"
-__doc__        = "Hindi to Urdu transliterator and vice-versa"
+__name__       = "Indic-Roman Transliterator"
+__doc__        = "Indic to Roman transliterator and vice-versa"
 __author__     = ["Riyaz Ahmad", "Irshad Ahmad"]
-__version__    = "0.1"
+__version__    = "1.0"
 __license__    = "MIT"
 __maintainer__ = "Irshad Ahmad"
 __email__      = "irshad.bhat@research.iiit.ac.in"
@@ -69,10 +70,7 @@ def main():
     else:
         for line in args.INFILE:
             tline = trn.convert(line)
-	    if args.format_ == "text":
-		args.OUTFILE.write("%s\n" %(tline))
-	    else:
-		args.OUTFILE.write(tline)
+	    args.OUTFILE.write(tline)
     
     # close files 
     args.INFILE.close()
