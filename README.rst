@@ -45,7 +45,8 @@ Install
 Examples
 ~~~~~~~~
 
-1. **Work with Files:**
+1. Work with Files:
+^^^^^^^^^^^^^^^^^^^
 
 .. parsed-literal::
 
@@ -66,9 +67,11 @@ Examples
 	irtrans < tests/hindi.txt --s hin --t eng > tests/hindi-rom.txt
 	irtrans < tests/roman.txt --s hin --t eng > tests/roman-hin.txt
 
-2. **From Python**
+2. Using Python:
+^^^^^^^^^^^^^^^^
 
-2.1 **Text:**
+a. Text:
+""""""""
 
 .. code:: python
 
