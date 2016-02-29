@@ -60,7 +60,7 @@ else:
     }
     params['entry_points'] = {'console_scripts': ['irtrans = irtrans:main']}
 
-# Get the version from youtube_dl/version.py without importing the package
+# Get the package version
 exec(compile(open('irtrans/version.py').read(),
              'irtrans/version.py', 'exec'))
 
@@ -82,10 +82,16 @@ setup(
     package_data={'irtrans': ['models/*.npy']},
 
     classifiers=[
-        "Topic :: Indian Languages :: Transliteration",
+        "Topic :: Text Processing :: Linguistic",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
-        "License :: Public Domain",
-        "Programming Language :: Python :: 2.7"
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.3",
+        "Operating System :: Unix"
     ],
     cmdclass={'build_ext': build_ext},
     ext_modules=[
