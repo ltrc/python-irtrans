@@ -77,7 +77,7 @@ setup(
     maintainer_email='irshad.bhat@research.iiit.ac.in',
     license = "MIT",
     url="https://github.com/irshadbhat/irtrans",
-    package_dir={"hutrams":"irtrans"},
+    package_dir={"irtrans":"irtrans"},
     packages=['irtrans', 'irtrans._utils', 'irtrans._decode'],
     package_data={'irtrans': ['models/*.npy']},
 
